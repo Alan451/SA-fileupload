@@ -1,0 +1,20 @@
+/* Google Fonts <https://fonts.google.com/> */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:wght@300;500&display=swap');
+
+.font-robo {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.font-news {
+  font-family: 'Newsreader', serif;
+}
+
+.font-news-bold {
+  font-family: 'Newsreader', serif;
+}
+
+input {
+  display: none;
+}
