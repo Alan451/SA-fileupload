@@ -21,9 +21,6 @@ def file_upload(request):
         stud = files.get('stud',None)
         if stud is not None:
             student.antiragging_students = stud
-        parent = files.get('parent',None)
-        if parent is not None:
-            student.antiragging_parents = parent
         cocp = files.get('cocp',None)
         if cocp is not None:
             student.code_conduct = cocp
@@ -36,10 +33,6 @@ def file_upload(request):
     except:
         print("none1")
     try:
-        antiragging_parents =  os.path.basename(student.antiragging_parents.name)[:-4][:15] 
-    except:
-        print("none2")
-    try:
         code_conduct = os.path.basename(student.code_conduct.name)[:-4][:15] 
     except:    
         print("none3")
@@ -48,7 +41,7 @@ def file_upload(request):
     except:
         print("none4")
     print(code_conduct)
-    return render(request,'file_upload.html',{'roll':student.rollNumber,'stud':antiragging_students,'parent':antiragging_parents,'cocp':code_conduct,'hostel':undertaking_hostel})
+    return render(request,'file_upload.html',{'roll':student.rollNumber,'stud':antiragging_students,'cocp':code_conduct,'hostel':undertaking_hostel})
 
 @login_required
 def roll(request):

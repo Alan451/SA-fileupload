@@ -10,21 +10,17 @@ except ImportError:
     from io import StringIO ## for Python 3
 class StudentAdmin(admin.ModelAdmin):
     actions = ['download_csv']
-    list_display = ('rollNumber','name', 'email',  'antiragging_students' ,'antiragging_parents','code_conduct', 'undertaking_hostel')
+    list_display = ('rollNumber','name', 'email',  'antiragging_students' ,'code_conduct', 'undertaking_hostel')
     def download_csv(self, request, queryset):
         f = StringIO()
         writer = csv.writer(f)
-        writer.writerow(['rollNumber','name', 'email',  'antiragging_students' ,'antiragging_parents','code_conduct', 'undertaking_hostel'])
+        writer.writerow(['rollNumber','name', 'email',  'antiragging_students' ,'code_conduct', 'undertaking_hostel'])
 
         for s in queryset:
             try:
                 stud = 'https://swc.iitg.ac.in'+s.antiragging_students.url
             except:
                 stud = 'N/A'
-            try:
-                parent = 'https://swc.iitg.ac.in'+s.antiragging_parents.url
-            except:
-               parent = 'N/A'
             try:
                 cocp = 'https://swc.iitg.ac.in'+s.code_conduct.url
             except:
@@ -35,7 +31,7 @@ class StudentAdmin(admin.ModelAdmin):
             except:
                 hostel = 'N/A'         
             
-            writer.writerow([s.rollNumber,s.name, s.email, stud ,parent,cocp, hostel])
+            writer.writerow([s.rollNumber,s.name, s.email, stud ,cocp, hostel])
 
         f.seek(0)
         response = HttpResponse(f, content_type='text/csv')
