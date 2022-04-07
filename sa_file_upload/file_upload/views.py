@@ -40,7 +40,7 @@ def file_upload(request):
         undertaking_hostel = os.path.basename(student.undertaking_hostel.name)[:-4][:15]
     except:
         print("none4")
-    print(code_conduct)
+    # print(code_conduct)
     return render(request,'file_upload.html',{'roll':student.rollNumber,'stud':antiragging_students,'cocp':code_conduct,'hostel':undertaking_hostel})
 
 @login_required
